@@ -14,6 +14,7 @@
 		BE605D79230DB78B00B7200F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE605D77230DB78B00B7200F /* LaunchScreen.storyboard */; };
 		BE605D97230DE8E100B7200F /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE605D96230DE8E100B7200F /* TweetsViewController.swift */; };
 		BE605D99230DED1400B7200F /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE605D98230DED1400B7200F /* TweetCell.swift */; };
+		BEAC37DE2310E7A800671150 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAC37DD2310E7A800671150 /* NetworkHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +65,7 @@
 		BE605D7A230DB78B00B7200F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE605D96230DE8E100B7200F /* TweetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
 		BE605D98230DED1400B7200F /* TweetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
-		BE68060F230EDE5C0051DB89 /* ParotterPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ParotterPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		BEAC37DD2310E7A800671150 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		BEDAD1F723109A4A00592C01 /* Swifter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swifter.xcodeproj; path = "Swifter-2.2.2/Swifter.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,11 +105,11 @@
 				BE605D70230DB78A00B7200F /* AuthViewController.swift */,
 				BE605D72230DB78A00B7200F /* Main.storyboard */,
 				BE605D75230DB78B00B7200F /* Assets.xcassets */,
+				BEAC37DD2310E7A800671150 /* NetworkHelper.swift */,
 				BE605D77230DB78B00B7200F /* LaunchScreen.storyboard */,
 				BE605D7A230DB78B00B7200F /* Info.plist */,
 				BE605D96230DE8E100B7200F /* TweetsViewController.swift */,
 				BE605D98230DED1400B7200F /* TweetCell.swift */,
-				BE68060F230EDE5C0051DB89 /* ParotterPlayground.playground */,
 			);
 			path = Parotter;
 			sourceTree = "<group>";
@@ -249,6 +250,7 @@
 			files = (
 				BE605D71230DB78A00B7200F /* AuthViewController.swift in Sources */,
 				BE605D6F230DB78A00B7200F /* AppDelegate.swift in Sources */,
+				BEAC37DE2310E7A800671150 /* NetworkHelper.swift in Sources */,
 				BE605D97230DE8E100B7200F /* TweetsViewController.swift in Sources */,
 				BE605D99230DED1400B7200F /* TweetCell.swift in Sources */,
 			);

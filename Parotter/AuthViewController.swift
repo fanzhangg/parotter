@@ -11,14 +11,15 @@ import SwifteriOS
 import SafariServices
 import os.log
 
+
 class ViewController: UIViewController, SFSafariViewControllerDelegate {
-    var swifter: Swifter
+    // var swifter: Swifter    // make as an shared instance
     
     // Use iOS account framework for handling twitter auth by defualt
     let useACAccount = false
     
     required init?(coder aDecoder: NSCoder) {
-        self.swifter = Swifter(consumerKey: "VQDFZmAR5pc0bWt1ja6ejK6Gs", consumerSecret: "45h2w0EbZmoYQGUb7PYT7KMekSR0wmfKuqhG1omPNxifKdv23y", oauthToken: "877897502808301568-kQ58dtIMpo4hQK21vTpe4qaxC6Gq95g", oauthTokenSecret: "pHln0haR7vzgs1GtC502VoiCKkI1YzCknaku4HDDyBL2G")
+        // self.swifter = Swifter(consumerKey: "VQDFZmAR5pc0bWt1ja6ejK6Gs", consumerSecret: "45h2w0EbZmoYQGUb7PYT7KMekSR0wmfKuqhG1omPNxifKdv23y", oauthToken: "877897502808301568-kQ58dtIMpo4hQK21vTpe4qaxC6Gq95g", oauthTokenSecret: "pHln0haR7vzgs1GtC502VoiCKkI1YzCknaku4HDDyBL2G")
         super.init(coder: aDecoder)
     }
     
@@ -31,8 +32,8 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
         if useACAccount {
             // prompt user for perssiom to the twitter account
         } else {
-            let url = URL(string: "swifter://success")!
-            swifter.authorize(withCallback: url, presentingFrom: self, safariDelegate: self, success: { _, _ in
+            let url = URL(string: "parotter://success")!
+            NetworkHelper.swifter.authorize(withCallback: url, presentingFrom: self, safariDelegate: self, success: { _, _ in
                 os_log("Authorization succeeds", log: OSLog.default, type: .debug)
                 self.fetchTwitterHomeStream()
             }, failure: failureHandler)
@@ -61,11 +62,12 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
 //        }, failure: failureHandler)
 //    }
     
+    //TODO: move to appDelegate
     func fetchTwitterHomeStream() {
         let failureHandler: (Error) -> Void = {error in
             self.alert(title: "Fetch Error", message: error.localizedDescription)
         }
-        self.swifter.getHomeTimeline(count: 20, success: {json in
+        NetworkHelper.swifter.getHomeTimeline(count: 20, success: {json in
             // Create tweet table view controller
             let tweetsViewController = self.storyboard!.instantiateViewController(withIdentifier: "TweetsViewController") as! TweetsViewController
             // Read tweets as json array

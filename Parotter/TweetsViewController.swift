@@ -29,19 +29,22 @@ class TweetsViewController: UITableViewController {
         tableView.register(TweetCell.self, forCellReuseIdentifier: reuseIdentifier)
     }
     
-    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tweets.count
+    }
     
     // set up the cells of the tweets
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         cell.textLabel?.text = tweets[indexPath.row]["text"].string
-        cell.detailTextLabel?.text = "Author: \(tweets[indexPath.row]["user"]["name"].string!) - @\(tweets[indexPath.row]["user"]["screen_name"].string!)"
+        cell.detailTextLabel?.text = "By \(tweets[indexPath.row]["user"]["name"].string!), @\(tweets[indexPath.row]["user"]["screen_name"].string!)"
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let screenName = tweets[indexPath.row]["user"]["scree_name"].string!
+        // Fatal error: Unexpectedly found nil while unwrapping an Optional value
+        let screenName = tweets[indexPath.row]["user"]["screen_name"].string!
         let id = tweets[indexPath.row]["id_str"].string!
         let url = URL(string: "https://twitter.com/\(screenName)/status/\(id)")!
         let safariView = SFSafariViewController(url: url)

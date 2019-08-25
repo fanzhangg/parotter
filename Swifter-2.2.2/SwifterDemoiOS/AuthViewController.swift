@@ -29,7 +29,7 @@ import Social
 import SwifteriOS
 import SafariServices
 
-class ViewController: UIViewController, SFSafariViewControllerDelegate {
+class AuthViewController: UIViewController, SFSafariViewControllerDelegate {
     
     var swifter: Swifter
 

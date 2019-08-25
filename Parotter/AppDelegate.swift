@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:])-> Bool {
-        // os_log("Callbak url: %s", url.absoluteString)
+        os_log("Opening url: %s", url.absoluteString)
         Swifter.handleOpenURL(url)
         return true
     }

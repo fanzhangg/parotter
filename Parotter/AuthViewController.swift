@@ -12,7 +12,7 @@ import SafariServices
 import os.log
 
 
-class ViewController: UIViewController, SFSafariViewControllerDelegate {
+class AuthViewController: UIViewController, SFSafariViewControllerDelegate {
     // var swifter: Swifter    // make as an shared instance
     
     // Use iOS account framework for handling twitter auth by defualt

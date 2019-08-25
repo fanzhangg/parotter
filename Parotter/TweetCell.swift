@@ -12,8 +12,10 @@ class TweetCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         textLabel?.numberOfLines = 0
-        textLabel?.font = .systemFont(ofSize: 14)
-        detailTextLabel?.textColor = .darkGray
+        textLabel?.font = .boldSystemFont(ofSize: 15)
+        detailTextLabel?.textColor = .black
+        detailTextLabel?.font = .systemFont(ofSize: 15)
+        detailTextLabel?.numberOfLines = 0
     }
     
     required init?(coder aDecoder: NSCoder) {

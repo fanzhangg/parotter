@@ -36,8 +36,9 @@ class TweetsViewController: UITableViewController {
     // set up the cells of the tweets
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        cell.textLabel?.text = tweets[indexPath.row]["text"].string
-        cell.detailTextLabel?.text = "By \(tweets[indexPath.row]["user"]["name"].string!), @\(tweets[indexPath.row]["user"]["screen_name"].string!)"
+        cell.textLabel?.text = "\(tweets[indexPath.row]["user"]["name"].string!) @\(tweets[indexPath.row]["user"]["screen_name"].string!)"
+        cell.detailTextLabel?.text = tweets[indexPath.row]["text"].string
+        // cell.detailTextLabel?.text = "By \(tweets[indexPath.row]["user"]["name"].string!), @\(tweets[indexPath.row]["user"]["screen_name"].string!)"
         return cell
     }
     

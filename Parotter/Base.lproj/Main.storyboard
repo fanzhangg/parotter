@@ -92,10 +92,78 @@
                             <outlet property="delegate" destination="p5Q-gZ-fBC" id="6JF-gS-bPd"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Home" image="icon-home" selectedImage="icon-home" id="Bdg-y8-g0G"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rYD-Vt-cni" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747.826086956522" y="783.48214285714278"/>
+            <point key="canvasLocation" x="3561" y="556"/>
+        </scene>
+        <!--Tweet Detail View Controller-->
+        <scene sceneID="wgV-nd-Vtj">
+            <objects>
+                <viewController storyboardIdentifier="TweetDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="z0f-5D-Ln2" customClass="TweetDetailViewController" customModule="Parotter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uXL-2H-mxp">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ItK-dh-pKb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z07-Yd-COF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4313" y="630"/>
+        </scene>
+        <!--FriendsViewController-->
+        <scene sceneID="XpB-aR-8HZ">
+            <objects>
+                <tableViewController storyboardIdentifier="FriendsViewController" title="FriendsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VhU-gs-XrN" customClass="FriendsViewController" customModule="Parotter" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="FriendsView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hjJ-xV-csU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendCell" id="YXd-c4-zVd">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YXd-c4-zVd" id="Fd7-RD-GLi">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="VhU-gs-XrN" id="O69-fU-Eqk"/>
+                            <outlet property="delegate" destination="VhU-gs-XrN" id="s67-vi-tus"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Friends" image="icon-friend" id="y0B-7x-Lin"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jbZ-km-74j" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3561" y="1223"/>
+        </scene>
+        <!--Home Bar Controller-->
+        <scene sceneID="lsW-Wn-SBQ">
+            <objects>
+                <tabBarController storyboardIdentifier="HomeBarController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Jfd-Sy-xDt" customClass="HomeBarController" customModule="Parotter" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Gpj-TP-onu">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="p5Q-gZ-fBC" kind="relationship" relationship="viewControllers" id="FkP-NE-iHK"/>
+                        <segue destination="VhU-gs-XrN" kind="relationship" relationship="viewControllers" id="ZRl-zg-WLz"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FN6-7f-ngU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2655.072463768116" y="783.48214285714278"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon-friend" width="14.5" height="15"/>
+        <image name="icon-home" width="15" height="15"/>
+    </resources>
 </document>

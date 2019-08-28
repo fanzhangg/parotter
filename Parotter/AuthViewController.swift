@@ -19,6 +19,7 @@ class AuthViewController: UIViewController, SFSafariViewControllerDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        navigationItem.hidesBackButton = true
     }
     
     @IBAction func didTouchUpInsideLoginButton(_ sender: Any) {
@@ -26,46 +27,45 @@ class AuthViewController: UIViewController, SFSafariViewControllerDelegate {
             self.alert(title: "Error", message: error.localizedDescription)
             os_log("Fail to login", log: OSLog.default, type: .debug)
         }
-        
+
         if useACAccount {
             // prompt user for perssiom to the twitter account
         } else {
             let url = URL(string: "parotter://success")!
-            NetworkHelper.swifter.authorize(withCallback: url, presentingFrom: self, safariDelegate: self, success: { _, _ in
+            NetworkHelper.swifter.authorize(withCallback: url, presentingFrom: self, safariDelegate: self, success: { accessToken, _ in
                 os_log("Authorization succeeds", log: OSLog.default, type: .debug)
                 self.fetchTwitterHomeStream()
+                NetworkHelper.accessToken = accessToken
+                os_log("Access token saved in NetworkHelper", log: OSLog.default, type: .debug)
             }, failure: failureHandler)
         }
     }
     
-    //TODO: move to appDelegate
+    /// Save 20 tweets to NetworkHelper.tweets and push HomeBarViewController
     func fetchTwitterHomeStream() {
         let failureHandler: (Error) -> Void = {error in
             self.alert(title: "Fetch Error", message: error.localizedDescription)
         }
         NetworkHelper.swifter.getHomeTimeline(count: 20, success: {json in
-            // Create tweet table view controller
-            let tweetsViewController = self.storyboard!.instantiateViewController(withIdentifier: "TweetsViewController") as! TweetsViewController
             // Read tweets as json array
+            os_log("Fetching tweets...", log: OSLog.default, type: .debug)
             guard let tweets = json.array else {
                 os_log("Fail to retrieve tweets", log: OSLog.default, type: .debug)
                 return
             }
-            tweetsViewController.tweets = tweets
-            // Push the tweets veiw controller
-            self.navigationController?.pushViewController(tweetsViewController, animated: true)
+            NetworkHelper.tweets = tweets
+            
+            let homeBarController = self.storyboard!.instantiateViewController(withIdentifier: "HomeBarController") as! HomeBarController   // Create an instance of HomeBarController
+            self.navigationController?.pushViewController(homeBarController, animated: true)   // Push HomeBarController
         }, failure: failureHandler)
     }
+    
+    
     
     func alert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 }
 

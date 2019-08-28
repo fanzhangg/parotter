@@ -34,7 +34,7 @@ class AuthViewController: UIViewController, SFSafariViewControllerDelegate {
     var swifter: Swifter
 
     // Default to using the iOS account framework for handling twitter auth
-    let useACAccount = false
+    let useACAccount = true
 
     required init?(coder aDecoder: NSCoder) {
         self.swifter = Swifter(consumerKey: "nLl1mNYc25avPPF4oIzMyQzft",

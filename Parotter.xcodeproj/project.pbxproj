@@ -14,6 +14,9 @@
 		BE605D79230DB78B00B7200F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE605D77230DB78B00B7200F /* LaunchScreen.storyboard */; };
 		BE605D97230DE8E100B7200F /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE605D96230DE8E100B7200F /* TweetsViewController.swift */; };
 		BE605D99230DED1400B7200F /* TweetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE605D98230DED1400B7200F /* TweetView.swift */; };
+		BE72DA442315DEFD0002D370 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE72DA432315DEFD0002D370 /* FriendsViewController.swift */; };
+		BE72DA4C2315E16A0002D370 /* TweetDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE72DA4B2315E16A0002D370 /* TweetDetailViewController.swift */; };
+		BE72DAC82315EAA10002D370 /* HomeBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE72DAC72315EAA10002D370 /* HomeBarController.swift */; };
 		BE94D75B2313359B0095EAF1 /* TweetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE94D75A2313359B0095EAF1 /* TweetView.xib */; };
 		BE94D76323133EF50095EAF1 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE94D76223133EF50095EAF1 /* TweetCell.swift */; };
 		BEAC37DE2310E7A800671150 /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEAC37DD2310E7A800671150 /* NetworkHelper.swift */; };
@@ -67,6 +70,9 @@
 		BE605D7A230DB78B00B7200F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE605D96230DE8E100B7200F /* TweetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
 		BE605D98230DED1400B7200F /* TweetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetView.swift; sourceTree = "<group>"; };
+		BE72DA432315DEFD0002D370 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		BE72DA4B2315E16A0002D370 /* TweetDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetDetailViewController.swift; sourceTree = "<group>"; };
+		BE72DAC72315EAA10002D370 /* HomeBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBarController.swift; sourceTree = "<group>"; };
 		BE94D75A2313359B0095EAF1 /* TweetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetView.xib; sourceTree = "<group>"; };
 		BE94D76223133EF50095EAF1 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 		BEAC37DD2310E7A800671150 /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
@@ -108,6 +114,7 @@
 				BE605D6E230DB78A00B7200F /* AppDelegate.swift */,
 				BE605D70230DB78A00B7200F /* AuthViewController.swift */,
 				BE605D72230DB78A00B7200F /* Main.storyboard */,
+				BE72DA432315DEFD0002D370 /* FriendsViewController.swift */,
 				BE605D75230DB78B00B7200F /* Assets.xcassets */,
 				BEAC37DD2310E7A800671150 /* NetworkHelper.swift */,
 				BE605D77230DB78B00B7200F /* LaunchScreen.storyboard */,
@@ -116,6 +123,8 @@
 				BE605D98230DED1400B7200F /* TweetView.swift */,
 				BE94D75A2313359B0095EAF1 /* TweetView.xib */,
 				BE94D76223133EF50095EAF1 /* TweetCell.swift */,
+				BE72DA4B2315E16A0002D370 /* TweetDetailViewController.swift */,
+				BE72DAC72315EAA10002D370 /* HomeBarController.swift */,
 			);
 			path = Parotter;
 			sourceTree = "<group>";
@@ -255,7 +264,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE72DA442315DEFD0002D370 /* FriendsViewController.swift in Sources */,
 				BE605D71230DB78A00B7200F /* AuthViewController.swift in Sources */,
+				BE72DAC82315EAA10002D370 /* HomeBarController.swift in Sources */,
+				BE72DA4C2315E16A0002D370 /* TweetDetailViewController.swift in Sources */,
 				BE605D6F230DB78A00B7200F /* AppDelegate.swift in Sources */,
 				BEAC37DE2310E7A800671150 /* NetworkHelper.swift in Sources */,
 				BE94D76323133EF50095EAF1 /* TweetCell.swift in Sources */,

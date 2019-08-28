@@ -22,12 +22,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    
-
-
+    /// Set the entry view depending on the authroization
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if NetworkHelper.swifter.client.credential != nil { // Enter the HomeBarView if the authorization has been completed
+            self.fetchTwitterHomeStream()
+            
+        } else {    // Eter the AuthView if authrization needed
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeBarController = storyboard.instantiateViewController(withIdentifier: "AuthViewController") as! AuthViewController   // Create an instance of HomeBarController
+            self.window?.rootViewController = homeBarController
+        }
         return true
+    }
+    
+    func fetchTwitterHomeStream() {
+        let failureHandler: (Error) -> Void = {error in
+            os_log("Fail to fetch home stream", log: OSLog.default, type: .default)
+        }
+        NetworkHelper.swifter.getHomeTimeline(count: 20, success: {json in
+            // Read tweets as json array
+            os_log("Fetching tweets...", log: OSLog.default, type: .debug)
+            guard let tweets = json.array else {
+                os_log("Fail to retrieve tweets", log: OSLog.default, type: .debug)
+                return
+            }
+            NetworkHelper.tweets = tweets
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let homeBarController = storyboard.instantiateViewController(withIdentifier: "HomeBarController") as! HomeBarController   // Create an instance of HomeBarController
+            self.window?.rootViewController = homeBarController
+            
+        }, failure: failureHandler)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

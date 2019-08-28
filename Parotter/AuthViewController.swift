@@ -20,6 +20,13 @@ class AuthViewController: UIViewController, SFSafariViewControllerDelegate {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         navigationItem.hidesBackButton = true
+        if NetworkHelper.swifter.client.credential != nil {
+            os_log("Authorization has been completed", log: OSLog.default, type: .debug)
+            self.fetchTwitterHomeStream()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
     }
     
     @IBAction func didTouchUpInsideLoginButton(_ sender: Any) {

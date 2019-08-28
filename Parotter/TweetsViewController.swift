@@ -45,7 +45,7 @@ class TweetsViewController: UITableViewController {
     /// Set the value of elements in tweetView
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell // Dequeue using the "tweetCell" and cast to TweetCell
-        let tweetDic = self.tweets[indexPath.row]    // Set current song to tweet of tweets at indexPath.row
+        let tweetDic = tweets[indexPath.row]    // Set current song to tweet of tweets at indexPath.row
         
         let screenName = tweetDic["user"]["screen_name"].string!
         let content = tweetDic["text"].string!

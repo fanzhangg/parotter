@@ -14,7 +14,7 @@ import os.log
 
 class TweetsViewController: UITableViewController {
     // lazy stored property: init when it is accessed / the view controller is initialized
-    lazy var tweets : [JSON] = NetworkHelper.tweets
+    let tweets: [JSON] = NetworkHelper.tweets
     let reuseIdentifier: String = "reuseIdentifier"
     
     override func viewDidLoad() {
@@ -28,6 +28,7 @@ class TweetsViewController: UITableViewController {
         tabBarItem.badgeValue = "6"
         self.title = "Home"
         self.navigationItem.title = "Home"
+
     }
     
     /// Set number of rows equal to the count of tweets

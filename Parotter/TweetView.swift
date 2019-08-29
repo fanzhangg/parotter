@@ -26,11 +26,8 @@ class TweetView: UIView {
     
     var tweet: Tweet! {
         didSet { // Observer to set all information on the cell to the information from the Tweet
-            os_log("Set user name")
             userName.text = tweet.userName
-            os_log("Set user id")
             userID.text = tweet.userID
-            os_log("Ser tweet content")
             tweetContent.text = tweet.content
         }
     }
@@ -39,13 +36,12 @@ class TweetView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-        os_log("Initialize via storyboard")
     }
+    
     // Initialize via code
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
-        os_log("Initialize via code")
     }
     
     func commonInit() {
@@ -61,3 +57,4 @@ class TweetView: UIView {
         tweetContent.numberOfLines = 0
     }
 }
+

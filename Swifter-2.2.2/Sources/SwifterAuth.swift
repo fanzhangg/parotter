@@ -83,8 +83,8 @@ public extension Swifter {
 						  safariDelegate: SFSafariViewControllerDelegate? = nil,
 						  success: TokenSuccessHandler?,
 						  failure: FailureHandler? = nil) {
-        self.postOAuthRequestToken(with: callbackURL, success: { token, response in
-            var requestToken = token!
+        self.postOAuthRequestToken(with: callbackURL, success: { key, response in
+            var requestToken = key!
             NotificationCenter.default.addObserver(forName: .swifterCallback, object: nil, queue: .main) { notification in
                 NotificationCenter.default.removeObserver(self)
                 presenting?.presentedViewController?.dismiss(animated: true, completion: nil)
@@ -100,7 +100,7 @@ public extension Swifter {
             }
 			
 			let forceLogin = forceLogin ? "&force_login=true" : ""
-			let query = "oauth/authorize?oauth_token=\(token!.key)\(forceLogin)"
+			let query = "oauth/authorize?oauth_token=\(key!.key)\(forceLogin)"
             let queryUrl = URL(string: query, relativeTo: TwitterURL.oauth.url)!
 			
             if let delegate = safariDelegate ?? (presenting as? SFSafariViewControllerDelegate) {

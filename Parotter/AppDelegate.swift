@@ -15,45 +15,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    /// Handle callback url
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:])-> Bool {
-        os_log("Opening url: %s", url.absoluteString)
-        Swifter.handleOpenURL(url)
-        
+        os_log("Opening callback url: %s", url.absoluteString)
+        if url.absoluteString.starts(with: "parotter://success") {
+            // self.pushHomeBarController()
+            os_log("Opening HomeBarView")
+            Swifter.handleOpenURL(url)
+        } else {
+            fatalError("Unhandled callback url")
+        }
         return true
     }
     
     /// Set the entry view depending on the authroization
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        if NetworkHelper.swifter.client.credential != nil { // Enter the HomeBarView if the authorization has been completed
-            self.fetchTwitterHomeStream()
-            
-        } else {    // Eter the AuthView if authrization needed
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeBarController = storyboard.instantiateViewController(withIdentifier: "AuthViewController") as! AuthViewController   // Create an instance of HomeBarController
-            self.window?.rootViewController = homeBarController
-        }
+//        // Override point for customization after application launch
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        if NetworkHelper.accessToken != nil { // Enter the HomeBarView if the authorization has been completed
+//            self.enterHomeBarView()
+//
+//        } else {    // Eter the AuthView if authrization needed
+//            let authViewController = storyboard.instantiateViewController(withIdentifier: "AuthViewController") as! AuthViewController   // Create an instance of AuthViewController
+//            self.window?.rootViewController = authViewController
+//        }
         return true
     }
     
-    func fetchTwitterHomeStream() {
-        let failureHandler: (Error) -> Void = {error in
-            os_log("Fail to fetch home stream", log: OSLog.default, type: .default)
-        }
-        NetworkHelper.swifter.getHomeTimeline(count: 20, success: {json in
-            // Read tweets as json array
-            os_log("Fetching tweets...", log: OSLog.default, type: .debug)
-            guard let tweets = json.array else {
-                os_log("Fail to retrieve tweets", log: OSLog.default, type: .debug)
-                return
-            }
-            NetworkHelper.tweets = tweets
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeBarController = storyboard.instantiateViewController(withIdentifier: "HomeBarController") as! HomeBarController   // Create an instance of HomeBarController
-            self.window?.rootViewController = homeBarController
-            
-        }, failure: failureHandler)
-    }
+//    /// Push the HomeBarController after opening callback url
+//    func pushHomeBarController() {
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let homeBarController = storyboard.instantiateViewController(withIdentifier: "HomeBarController") as! HomeBarController   // Create an instance of HomeBarController
+//            let navController = self.window?.rootViewController?.navigationController as! UINavigationController
+//            navController.pushViewController(homeBarController, animated: true) // Push HomeBarController
+//    }
+    
+//    func enterHomeBarView() {
+//        let failureHandler: (Error) -> Void = {error in
+//            os_log("Fail to fetch home stream", log: OSLog.default, type: .default)
+//        }
+//        // Get tweets
+//        NetworkHelper.swifter.getHomeTimeline(count: 20, success: {json in
+//            os_log("Fetching tweets...", log: OSLog.default, type: .debug)
+//            guard let tweets = json.array else {
+//                os_log("Fail to retrieve tweets", log: OSLog.default, type: .debug)
+//                return
+//            }
+//            NetworkHelper.tweets = tweets
+//            // Initialize HomeBarView
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            let homeBarController = storyboard.instantiateViewController(withIdentifier: "HomeBarController") as! HomeBarController   // Create an instance of HomeBarController
+//            self.window?.rootViewController = homeBarController
+//            
+//        }, failure: failureHandler)
+//    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -26,6 +26,7 @@ class AuthViewController: UIViewController, SFSafariViewControllerDelegate {
     func initAccessToken() {
         if let accessToken = loadAccessToken() {
             NetworkHelper.swifter = Swifter(consumerKey: "VQDFZmAR5pc0bWt1ja6ejK6Gs", consumerSecret: "45h2w0EbZmoYQGUb7PYT7KMekSR0wmfKuqhG1omPNxifKdv23y", oauthToken: accessToken.key, oauthTokenSecret: accessToken.secret)
+            NetworkHelper.accessToken = accessToken
             self.fetchTwitterHomeStream()
         } else {
             os_log("Access token has not yet been stored, start user authroization", log: OSLog.default, type: .debug)
@@ -90,12 +91,13 @@ class AuthViewController: UIViewController, SFSafariViewControllerDelegate {
             return
         }
         
-        let savedToken = AccessToken(token: accessToken.key, secret: accessToken.secret)
+        let savedToken = AccessToken(token: accessToken.key, secret: accessToken.secret, screenName: accessToken.screenName!, userID: accessToken.userID!)
         
         do {
             let data = try NSKeyedArchiver.archivedData(withRootObject: savedToken!, requiringSecureCoding: false)
             try data.write(to: AccessToken.ArchiveURL.absoluteURL)
             os_log("Access token saved", log: OSLog.default, type: .debug)
+            NetworkHelper.accessToken = savedToken
         } catch {
             os_log("Unable to save access token", log: OSLog.default, type: .error)
         }

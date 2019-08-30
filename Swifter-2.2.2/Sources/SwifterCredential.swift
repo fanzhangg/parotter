@@ -54,7 +54,6 @@ public class Credential {
             self.screenName = attributes["screen_name"]
             self.userID = attributes["user_id"]
         }
-        
     }
 
     public internal(set) var accessToken: OAuthAccessToken?

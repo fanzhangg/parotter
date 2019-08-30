@@ -25,7 +25,7 @@ class TweetsViewController: UITableViewController {
         super.init(coder: aDecoder)
         // Initialize tab bar item
         tabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "icon-home"), tag: 0)
-        tabBarItem.badgeValue = "6"
+        // tabBarItem.badgeValue = "6"
         self.title = "Home"
         self.navigationItem.title = "Home"
 
